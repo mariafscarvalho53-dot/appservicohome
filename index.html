@@ -1,1 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brasil Tecnologia - Provedor de Internet</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a5fb4;
+            --secondary-color: #0d47a1;
+            --accent-color: #26c6da;
+            --light-color: #f5f9ff;
+            --dark-color: #333333;
+            --success-color: #4caf50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 95, 180, 0.85), rgba(13, 71, 161, 0.9)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #00bcd4;
+            border-color: #00bcd4;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .icon-box {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.3s;
+            border: 1px solid #e1e8ff;
+        }
+        
+        .icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon-box i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .contact-info {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+        }
+        
+        .contact-info i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .stats-box {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stats-box h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .stats-box p {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-wifi"></i> Brasil Tecnologia
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicos">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Conectando você ao futuro digital</h1>
+                    <p>A <span class="highlight">Brasil Tecnologia</span> oferece a melhor conexão de internet para sua casa ou empresa. Velocidade, estabilidade e suporte técnico especializado para você navegar sem limites.</p>
+                    <a href="#contato" class="btn btn-primary btn-lg">
+                        <i class="bi bi-telephone"></i> Fale Conosco
+                    </a>
+                </div>
+                <div class="col-lg-6 text-center d-none d-lg-block">
+                    <i class="bi bi-wifi" style="font-size: 15rem; opacity: 0.8;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Sobre a Empresa</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <h3><i class="bi bi-building"></i> Dados Cadastrais</h3>
+                        <p><strong>Razão Social:</strong> Brasil Servicos de Tecnologia LTDA</p>
+                        <p><strong>Nome Fantasia:</strong> Brasil Tecnologia</p>
+                        <p><strong>CNPJ:</strong> 36.947.264/0001-02</p>
+                        <p><strong>Data Situação Cadastral:</strong> 19/03/2020</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <h3><i class="bi bi-geo-alt"></i> Localização</h3>
+                        <p><strong>Endereço:</strong> Avenida Guilherme Kurtz, 547 - Sala 09</p>
+                        <p><strong>Bairro:</strong> Centro</p>
+                        <p><strong>CEP:</strong> 97185-000</p>
+                        <p><strong>Cidade/Estado:</strong> Itaara - Rio Grande do Sul</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="stats-box">
+                        <h3>+3</h3>
+                        <p>Anos no mercado</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-box">
+                        <h3>100%</h3>
+                        <p>Satisfação dos clientes</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stats-box">
+                        <h3>24/7</h3>
+                        <p>Suporte técnico</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="info-card">
+                        <h3 class="text-center"><i class="bi bi-star"></i> Nossa Missão</h3>
+                        <p class="text-center lead">Proporcionar conexões de internet de alta qualidade, com tecnologia de ponta e atendimento personalizado, levando inovação e desenvolvimento digital para nossos clientes em Itaara e região.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="icon-box">
+                        <i class="bi bi-house-door"></i>
+                        <h4>Internet Residencial</h4>
+                        <p>Planos de internet de alta velocidade para sua casa, com opções que atendem a todas as necessidades da sua família.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="icon-box">
+                        <i class="bi bi-building"></i>
+                        <h4>Internet Empresarial</h4>
+                        <p>Conexão dedicada e estável para empresas, com suporte prioritário e garantia de disponibilidade.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="icon-box">
+                        <i class="bi bi-wifi"></i>
+                        <h4>Wi-Fi de Alta Performance</h4>
+                        <p>Instalação e configuração de redes Wi-Fi otimizadas para melhor cobertura e velocidade em todos os ambientes.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="icon-box">
+                        <i class="bi bi-shield-check"></i>
+                        <h4>Segurança Digital</h4>
+                        <p>Soluções de segurança para proteger sua rede e dispositivos contra ameaças e invasões.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="icon-box">
+                        <i class="bi bi-headset"></i>
+                        <h4>Suporte Técnico</h4>
+                        <p>Assistência especializada 24/7 para resolver qualquer problema com sua conexão de internet.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="icon-box">
+                        <i class="bi bi-speedometer2"></i>
+                        <h4>Internet Fibra Óptica</h4>
+                        <p>Tecnologia de fibra óptica para máxima velocidade e estabilidade na sua conexão com a internet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Informações de Contato</h3>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-telephone"></i>
+                            <div>
+                                <h5>Telefone</h5>
+                                <p>(51) 3378-5980</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-geo-alt"></i>
+                            <div>
+                                <h5>Endereço</h5>
+                                <p>Avenida Guilherme Kurtz, 547 - Sala 09<br>
+                                Centro, Itaara - RS<br>
+                                CEP: 97185-000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-clock"></i>
+                            <div>
+                                <h5>Horário de Atendimento</h5>
+                                <p>Segunda a Sexta: 8h às 18h<br>
+                                Sábado: 8h às 12h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5>Siga-nos</h5>
+                            <div class="d-flex mt-2">
+                                <a href="#" class="me-3 text-primary fs-4"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="me-3 text-primary fs-4"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="me-3 text-primary fs-4"><i class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="info-card">
+                        <h3 class="mb-4">Envie uma mensagem</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome completo</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" id="telefone" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-links">
+                        <i class="bi bi-wifi"></i> Brasil Tecnologia
+                    </h4>
+                    <p>Provedor de internet de alta qualidade em Itaara e região. Conectando pessoas e negócios ao futuro digital com tecnologia, velocidade e confiança.</p>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-links">Links Rápidos</h5>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre a Empresa</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-links">Nossos Serviços</h5>
+                    <ul>
+                        <li><a href="#servicos">Internet Residencial</a></li>
+                        <li><a href="#servicos">Internet Empresarial</a></li>
+                        <li><a href="#servicos">Wi-Fi de Alta Performance</a></li>
+                        <li><a href="#servicos">Suporte Técnico 24/7</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Brasil Tecnologia - Provedor de Internet. Todos os direitos reservados.</p>
+                <p>CNPJ: 36.947.264/0001-02 | Data de Cadastro: 19/03/2020</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scroll para os links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission simulation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
